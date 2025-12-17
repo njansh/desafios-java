@@ -51,7 +51,7 @@ br/com/nadson/desafio1/
 ## ▶️ Como executar
 1. Clone o repositório:
 ```
-git clone https://github.com/njansh/Curso-alura.git
+git clone https://github.com/njansh/desafios-java.git
 ```
 
 2. Importe o projeto em sua IDE Java (IntelliJ, Eclipse ou VS Code)
