@@ -4,6 +4,7 @@ import com.br.nadson.sistema_de_biblioteca.enums.EstadoLivro;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Usuario extends Pessoa{
     private static final int MAX_LIVROS_EMPRESTADOS = 5;
@@ -57,5 +58,17 @@ public boolean temLivrosEmprestados(){
     @Override
     public String apresentar(){
         return String.format("Nome: %s, Idade: %d, Matricula: %d", getNome(), getIdade(), getMatricula());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return matricula == usuario.matricula;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(matricula);
     }
 }

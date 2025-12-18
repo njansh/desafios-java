@@ -2,13 +2,15 @@ package com.br.nadson.sistema_de_biblioteca.modelo;
 
 import com.br.nadson.sistema_de_biblioteca.enums.EstadoLivro;
 
+import java.util.Objects;
+
 public class Livro {
     private EstadoLivro estadoLivro;
     private String titulo;
     private String autor;
-    private int isbn;
+    private String isbn;
 
-    public Livro(String titulo, String autor, int isbn) {
+    public Livro(String titulo, String autor, String isbn) {
         if(titulo == null || titulo.isBlank()) {
             throw new IllegalArgumentException("Titulo inválido");
 
@@ -17,7 +19,7 @@ public class Livro {
             throw new IllegalArgumentException("Autor inválido");
 
         }
-        if(isbn <= 0) {
+        if(isbn == null || isbn.isBlank()) {
             throw new IllegalArgumentException("ISBN inválido");
 
         }
@@ -48,5 +50,15 @@ public class Livro {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return Objects.equals(isbn, livro.isbn);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(isbn);
+    }
 }
