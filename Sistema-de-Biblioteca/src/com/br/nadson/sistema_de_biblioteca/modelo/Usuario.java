@@ -26,7 +26,8 @@ public void emprestarLivro(Livro livro){
         if (livro==null){
             throw new IllegalArgumentException("Livro invalido");
         }
-        if(livros.contains(livro){
+        if(livros.contains(livro)){
+            throw new IllegalStateException("Livro ja esta emprestado");
     }
         livro.emprestar();
         livros.add(livro);
@@ -35,7 +36,9 @@ public void devolverLivro(Livro livro){
         if(livro==null){
             throw new IllegalArgumentException("Livro invalido");
 
-        }
+        }if(!livros.contains(livro)){
+            throw new IllegalStateException("Livro nao esta emprestado");
+    }
 
         livro.devolver();
         livros.remove(livro);
