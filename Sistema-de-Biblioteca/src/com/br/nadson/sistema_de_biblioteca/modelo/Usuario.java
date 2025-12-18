@@ -1,7 +1,5 @@
 package com.br.nadson.sistema_de_biblioteca.modelo;
 
-import com.br.nadson.sistema_de_biblioteca.enums.EstadoLivro;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -48,12 +46,12 @@ public void devolverLivro(Livro livro){
         livros.remove(livro);
 }
 public boolean temLivrosEmprestados(){
-        if (livros.isEmpty()){
-            return false;
-        }else{
-            return true;
-        }
+        return !livros.isEmpty();
 }
+
+    public int getQuantidadeLivrosEmprestados() {
+        return livros.size();
+    }
 
     @Override
     public String apresentar(){

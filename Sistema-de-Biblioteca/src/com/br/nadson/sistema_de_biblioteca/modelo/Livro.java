@@ -30,6 +30,18 @@ public class Livro {
         this.estadoLivro = EstadoLivro.DISPONIVEL;
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
     public EstadoLivro getEstadoLivro() {
         return estadoLivro;
     }
@@ -48,6 +60,14 @@ public class Livro {
         }else {
             throw new IllegalStateException("O livro não foi emprestado ainda");
         }
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Livro{titulo='%s', autor='%s', isbn='%s', estado=%s}",
+                titulo, autor, isbn, estadoLivro
+        );
     }
 
     @Override
