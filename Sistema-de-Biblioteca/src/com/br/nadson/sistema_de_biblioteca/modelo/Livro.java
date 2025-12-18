@@ -31,6 +31,22 @@ public class Livro {
     public EstadoLivro getEstadoLivro() {
         return estadoLivro;
     }
+    public EstadoLivro emprestar(){
+        if (estadoLivro==EstadoLivro.DISPONIVEL){
+            return estadoLivro=EstadoLivro.EMPRESTADO;
+        } else {
+        throw  new IllegalStateException("O livro ja esta emprestado");
+
+        }
+    }
+
+    public EstadoLivro devolver(){
+        if (estadoLivro==EstadoLivro.EMPRESTADO){
+            return estadoLivro=EstadoLivro.DISPONIVEL;
+        }else {
+            throw new IllegalStateException("O livro não foi emprestado ainda");
+        }
+    }
 
 
 }
