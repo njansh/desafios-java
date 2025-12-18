@@ -16,7 +16,7 @@ public class Biblioteca {
         this.livros = new ArrayList<>();
     }
 
-    public void adicionarUsuario(String nome, int idade) {
+    public Usuario adicionarUsuario(String nome, int idade) {
         if (idade <= 0) {
             throw new IllegalArgumentException("Idade invalida");
         }if(nome==null){
@@ -28,6 +28,7 @@ public class Biblioteca {
             throw new IllegalStateException("Usuario ja cadastrado");
         }
         usuarios.add(usuario);
+        return usuario;
     }
 
     public void removerUsuario(Usuario usuario) {
@@ -43,7 +44,7 @@ public class Biblioteca {
         usuarios.remove(usuario);
     }
 
-    public void adicionarLivro(String titulo, String autor, String isbn){
+    public Livro adicionarLivro(String titulo, String autor, String isbn){
 
         if (titulo == null || titulo.isBlank()) {
             throw new IllegalArgumentException("Titulo invalido");
@@ -60,6 +61,7 @@ public class Biblioteca {
             throw new IllegalStateException("Livro ja cadastrado");
         }
         livros.add(livro);
+        return livro;
     }
 
     public void removerLivro(Livro livro) {
