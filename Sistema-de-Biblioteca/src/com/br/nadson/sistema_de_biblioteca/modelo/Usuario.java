@@ -46,6 +46,13 @@ public void devolverLivro(Livro livro){
         livro.devolver();
         livros.remove(livro);
 }
+public boolean temLivrosEmprestados(){
+        if (livros.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
+}
 
     @Override
     public String apresentar(){
