@@ -16,12 +16,16 @@ public class Biblioteca {
         this.livros = new ArrayList<>();
     }
 
-    public void adicionarUsuario(Usuario usuario) {
-        if (usuario == null) {
-            throw new IllegalArgumentException("Usuario invalido");
+    public void adicionarUsuario(String nome, int idade) {
+        if (idade <= 0) {
+            throw new IllegalArgumentException("Idade invalida");
+        }if(nome==null){
+            throw new IllegalArgumentException("Nome invalido");
+
         }
+        Usuario usuario = new Usuario(nome, idade);
         if (usuarios.contains(usuario)) {
-            throw new IllegalArgumentException("Usuario ja cadastrado");
+            throw new IllegalStateException("Usuario ja cadastrado");
         }
         usuarios.add(usuario);
     }
@@ -39,10 +43,19 @@ public class Biblioteca {
         usuarios.remove(usuario);
     }
 
-    public void adicionarLivro(Livro livro) {
-        if (livro == null) {
-            throw new IllegalArgumentException("Livro invalido");
+    public void adicionarLivro(String titulo, String autor, String isbn){
+
+        if (titulo == null || titulo.isBlank()) {
+            throw new IllegalArgumentException("Titulo invalido");
         }
+        if (autor == null || autor.isBlank()) {
+            throw new IllegalArgumentException("Autor invalido");
+        }
+        if (isbn == null || isbn.isBlank()) {
+            throw new IllegalArgumentException("ISBN invalido");
+        }
+        Livro livro = new Livro(titulo, autor, isbn);
+
         if (livros.contains(livro)) {
             throw new IllegalStateException("Livro ja cadastrado");
         }
