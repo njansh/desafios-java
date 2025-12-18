@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario extends Pessoa{
+    private static final int MAX_LIVROS_EMPRESTADOS = 5;
     private static int GERADOR_MATRICULA = 1;
     private final int matricula;
     private List<Livro> livros;
@@ -28,10 +29,12 @@ public void emprestarLivro(Livro livro){
         }
         if(livros.contains(livro)){
             throw new IllegalStateException("Livro ja esta emprestado");
+    }  if (livros.size()==MAX_LIVROS_EMPRESTADOS){
+        throw new IllegalStateException("Numero maximo de emprestimos atingido");
     }
         livro.emprestar();
         livros.add(livro);
-}
+    }
 public void devolverLivro(Livro livro){
         if(livro==null){
             throw new IllegalArgumentException("Livro invalido");
