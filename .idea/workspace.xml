@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16f9c9be-cca9-4fea-b16f-8aed8b750ffc" name="Changes" comment="feat: implementar biblioteca como fachada com controle de empréstimos e validações">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sistema-de-Biblioteca/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Sistema-de-Biblioteca/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sistema-de-Biblioteca/src/com/br/nadson/sistema_de_biblioteca/principal/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sistema-de-Biblioteca/src/com/br/nadson/sistema_de_biblioteca/principal/SistemaBiblioteca.java" beforeDir="false" afterPath="$PROJECT_DIR$/Sistema-de-Biblioteca/src/com/br/nadson/sistema_de_biblioteca/principal/SistemaBiblioteca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desafios-java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desafios-java.iml" afterDir="false" />
-    </list>
+    <list default="true" id="16f9c9be-cca9-4fea-b16f-8aed8b750ffc" name="Changes" comment="feat: implementar biblioteca como fachada com controle de empréstimos e validações" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,6 +73,7 @@
       <workItem from="1766085328918" duration="66000" />
       <workItem from="1766085413626" duration="10213000" />
       <workItem from="1766173925795" duration="2129000" />
+      <workItem from="1766180328868" duration="23000" />
     </task>
     <task id="LOCAL-00001" summary="feat: controle de empréstimo e devolução de livros pelo usuário">
       <option name="closed" value="true" />
