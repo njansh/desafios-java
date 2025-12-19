@@ -1,5 +1,7 @@
 package br.com.nadson.sistema_de_pedidos.modelo;
 
+import br.com.nadson.sistema_de_pedidos.enums.StatusPedido;
+
 import java.util.ArrayList;
 import java.util.List;
 
