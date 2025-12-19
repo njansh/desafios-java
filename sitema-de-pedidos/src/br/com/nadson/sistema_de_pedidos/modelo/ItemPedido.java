@@ -21,4 +21,16 @@ if (produto==null){
     public Produto getProduto() {
         return produto;
     }
+
+    public double getValorTotal(){
+        return quantidade*produto.getPreco();
+    }
+
+    @Override
+    public String toString() {
+        return "ItemPedido{" +
+                "quantidade=" + quantidade +
+                ", produto=" + produto.getNome() +
+                '}';
+    }
 }
