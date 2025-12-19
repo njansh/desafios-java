@@ -1,19 +1,19 @@
 
 # 📚 Sistema de Biblioteca
 
-Este projeto consiste em um **Sistema de Biblioteca desenvolvido em Java**, com foco na **prática de Programação Orientada a Objetos** e na aplicação de **regras de negócio** comuns a um sistema real.
+Este projeto consiste em um **Sistema de Biblioteca desenvolvido em Java**, com foco na **prática de Programação Orientada a Objetos (POO)** e na implementação de **regras de negócio típicas de um sistema real**.
 
-O objetivo principal é **consolidar os fundamentos da linguagem Java**, sem o uso de frameworks, priorizando clareza, organização e modelagem correta do domínio.
+O objetivo principal é **consolidar os fundamentos da linguagem Java**, sem o uso de frameworks, priorizando **clareza, organização e correta modelagem do domínio**.
 
 ---
 
 ## 🎯 Objetivo do projeto
 
-* Praticar Java orientado a objetos
-* Modelar entidades do mundo real (Livro, Usuário, Empréstimo, etc.)
-* Aplicar regras de negócio de forma consistente
-* Trabalhar com coleções e validações
-* Desenvolver lógica sem dependência de frameworks
+* Praticar Programação Orientada a Objetos em Java
+* Modelar entidades do mundo real (Livro, Usuário, Biblioteca)
+* Implementar regras de negócio de forma consistente
+* Trabalhar com coleções e validações de domínio
+* Desenvolver lógica de negócio sem dependência de frameworks
 
 ---
 
@@ -21,39 +21,39 @@ O objetivo principal é **consolidar os fundamentos da linguagem Java**, sem o u
 
 * Classes e objetos
 * Encapsulamento
+* Herança
 * Associações entre classes
-* Enumerações para estados
+* Enumerações para controle de estado
 * Validações de domínio
 * Coleções (`List`, `ArrayList`)
 * Separação de responsabilidades
-* Uso de métodos para regras de negócio
+* Métodos responsáveis por regras de negócio
 
 ---
 
 ## 📂 Estrutura do projeto
 
-A organização segue uma separação lógica por responsabilidade:
+A organização do projeto segue uma separação lógica por responsabilidade:
 
 ```
 src/
 ├── modelo        # Entidades do sistema
-├── enums         # Estados e tipos (ex: status de livro)
-├── servico       # Regras de negócio
-└── principal     # Classe Main para execução
+├── enums         # Enumerações de estado (ex: EstadoLivro)
+├── servico       # Camada de regras de negócio
+└── principal     # Classe Main para execução e demonstração
 ```
 
 ---
 
-## 📘 Funcionalidades previstas
+## 📘 Funcionalidades implementadas
 
-* Cadastro de livros
 * Cadastro de usuários
-* Empréstimo de livros
+* Cadastro de livros
+* Empréstimo de livros com controle de limite
 * Devolução de livros
-* Controle de disponibilidade
-* Relatórios simples do sistema
-
-*(As funcionalidades podem evoluir conforme o aprendizado avança.)*
+* Controle de disponibilidade do livro
+* Validações de regras de negócio
+* Simulação completa via classe `Main`
 
 ---
 
@@ -61,7 +61,7 @@ src/
 
 * Java
 * Git e GitHub
-* IDE (IntelliJ / Eclipse / VS Code)
+* IDE (IntelliJ IDEA / Eclipse / VS Code)
 
 ---
 
@@ -69,13 +69,13 @@ src/
 
 1. Clone o repositório:
 
-   ```bash
-   git clone https://github.com/njansh/desafios-java.git
-   ```
+```bash
+git clone https://github.com/njansh/desafios-java.git
+```
 
-2. Abra o projeto na IDE
+2. Abra o projeto em uma IDE Java
 
-3. Execute a classe `Main`
+3. Execute a classe `SistemaBiblioteca`
 
 ---
 
@@ -83,15 +83,16 @@ src/
 
 Este projeto poderá ser **refatorado futuramente** para:
 
-* Melhorar organização
-* Reduzir acoplamento
+* Melhorar a organização interna
+* Reduzir acoplamento entre classes
 * Aplicar boas práticas aprendidas posteriormente
-* Servir de base para comparação antes/depois do aprendizado de Spring
+* Servir como base comparativa antes e depois do aprendizado de frameworks como Spring
 
 ---
 
 ## 📌 Observação
 
-Este sistema foi criado com fins **educacionais**, priorizando o aprendizado sólido do Java base antes da introdução de frameworks.
+Este sistema foi desenvolvido com **finalidade educacional**, priorizando o domínio do **Java base e da Programação Orientada a Objetos** antes da introdução de frameworks.
 
 ---
+

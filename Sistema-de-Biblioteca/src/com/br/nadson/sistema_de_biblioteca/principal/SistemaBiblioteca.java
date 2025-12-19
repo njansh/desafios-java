@@ -87,14 +87,18 @@ public class SistemaBiblioteca {
         System.out.println();
 
         // Devolver todos os livros de u1 para que ele possa ser removido
-        biblioteca.devolverLivros(u1, l2);
-        biblioteca.devolverLivros(u1, l5);
-        System.out.println(u1.getNome() + " devolveu todos os livros.");
-        biblioteca.removerUsuario(u1);
-        System.out.println("Usuário " + u1.getNome() + " removido.");
-        System.out.println();
+        try {
+            biblioteca.devolverLivros(u1, l2);
+            biblioteca.devolverLivros(u1, l5);
+            System.out.println(u1.getNome() + " devolveu todos os livros.");
+            biblioteca.removerUsuario(u1);
+            System.out.println("Usuário " + u1.getNome() + " removido.");
+            System.out.println();
+        }catch (IllegalStateException | IllegalArgumentException e) {
+        System.out.println("Erro ao devolver livro: " + e.getMessage()  );
+        }
 
-        // Devolver todos os livros de u2 para que ele possa ser removido
+            // Devolver todos os livros de u2 para que ele possa ser removido
         biblioteca.devolverLivros(u2, l3);
         biblioteca.devolverLivros(u2, l4);
         System.out.println(u2.getNome() + " devolveu todos os livros.");
@@ -103,7 +107,6 @@ public class SistemaBiblioteca {
         System.out.println();
 
         // Remover livros restantes
-        biblioteca.removerLivro(l6);
         System.out.println("Livro " + l6.getTitulo() + " removido.");
         biblioteca.removerLivro(l1);
         System.out.println("Livro " + l1.getTitulo() + " removido.");
