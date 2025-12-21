@@ -8,20 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Time implements Competidor, Pontuavel, Validavel {
+
     private static int PROXIMO_ID = 1;
+
     private String nome;
     private final int id;
     private int pontos;
-    List<Jogador> jogadors;
+    private final List<Jogador> jogadores;
 
     public Time(String nome) {
         this.nome = nome;
+        validar();
         this.id = PROXIMO_ID++;
         this.pontos = 0;
-        this.jogadors = new ArrayList<>();
-        validar();
-
-
+        this.jogadores = new ArrayList<>();
     }
 
     @Override
@@ -46,18 +46,18 @@ public class Time implements Competidor, Pontuavel, Validavel {
         this.pontos += pontos;
     }
 
-    public List<Jogador> getJogadors() {
-        return jogadors;
+    public List<Jogador> getJogadores() {
+        return List.copyOf(jogadores);
     }
 
     public void adicionarJogador(Jogador jogador) {
         if (jogador == null) {
-            throw new IllegalStateException("Jogador não pode ser nulo.");
+            throw new IllegalArgumentException("Jogador não pode ser nulo.");
         }
-        if(jogadors.size() >= 11){
-            throw new IllegalArgumentException("Um time não pode ter mais de 11 jogadores.");
+        if (jogadores.size() >= 11) {
+            throw new IllegalStateException("Um time não pode ter mais de 11 jogadores.");
         }
-        this.jogadors.add(jogador);
+        jogadores.add(jogador);
     }
 
     @Override
@@ -65,5 +65,9 @@ public class Time implements Competidor, Pontuavel, Validavel {
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("Nome do time não pode ser nulo ou vazio.");
         }
+    }
+
+    public boolean estaAptoParaPartida() {
+        return jogadores.size() >= 7 && jogadores.size() <= 11;
     }
 }
