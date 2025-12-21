@@ -15,7 +15,7 @@ public class JogadorService {
     public Jogador adicionarJogador(String nome, String posicao) {
         Jogador jogador = new Jogador(nome, posicao);
         if (jogadors.contains(jogador)) {
-            throw new IllegalStateException("Já existe um jogador com o mesmo ID.");
+            throw new IllegalStateException("Já existe um jogador com o mesmo nome e posição.");
         }
         this.jogadors.add(jogador);
         return jogador;
