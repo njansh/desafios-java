@@ -71,16 +71,17 @@ public class Time implements Competidor, Pontuavel, Validavel {
     public boolean estaAptoParaPartida() {
         return jogadores.size() >= 7 && jogadores.size() <= 11;
     }
-
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Time time = (Time) o;
-        return id == time.id;
+        return nome.equalsIgnoreCase(time.nome);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return nome.toLowerCase().hashCode();
     }
+
 }
