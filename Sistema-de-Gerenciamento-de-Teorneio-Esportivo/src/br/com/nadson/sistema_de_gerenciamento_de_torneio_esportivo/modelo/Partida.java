@@ -2,20 +2,29 @@ package br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.modelo;
 
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.enums.ResultadoPartida;
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.enums.StatusPartida;
+import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.enums.Turno;
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.interfaces.Finalizavel;
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.interfaces.Validavel;
+
+import java.util.Objects;
 
 public class Partida implements Finalizavel, Validavel {
     private Time timeA;
     private Time timeB;
     private StatusPartida status;
     private ResultadoPartida resultado;
+    private Turno turno;
     private int golsTimeA;
     private int golsTimeB;
 
-    public Partida(Time timeA, Time timeB) {
+    public Partida(Time timeA, Time timeB, String turno) {
         this.timeA = timeA;
         this.timeB = timeB;
+        try {
+            this.turno = Turno.valueOf(turno.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Turno inválido. Use IDA ou VOLTA.");
+        }
         this.status = StatusPartida.AGENDADA;
         this.golsTimeA = 0;
         this.golsTimeB = 0;
@@ -46,6 +55,10 @@ public class Partida implements Finalizavel, Validavel {
         return golsTimeB;
     }
 
+    public Turno getTurno() {
+        return turno;
+    }
+
         public void marcarGolTimeA() {
         if (status != StatusPartida.EM_ANDAMENTO) {
             throw new IllegalStateException("Não é possível marcar gol em uma partida que não está em andamento.");
@@ -72,6 +85,7 @@ public class Partida implements Finalizavel, Validavel {
         if (status != StatusPartida.EM_ANDAMENTO) {
             throw new IllegalStateException("Não é possível finalizar uma partida que não está em andamento.");
         }
+        this.status = StatusPartida.FINALIZADA;
         if (golsTimeA > golsTimeB) {
             resultado = ResultadoPartida.VITORIA_TIME_A;
             timeA.adicionarPontos(3);
@@ -83,7 +97,6 @@ public class Partida implements Finalizavel, Validavel {
             timeA.adicionarPontos(1);
             timeB.adicionarPontos(1);
         }
-        this.status = StatusPartida.FINALIZADA;
     }
 
     @Override
@@ -97,5 +110,20 @@ public class Partida implements Finalizavel, Validavel {
         if (!timeA.estaAptoParaPartida() || !timeB.estaAptoParaPartida()) {
             throw new IllegalStateException("Ambos os times devem estar aptos para a partida (mínimo de 7 jogadores).");
         }
+        if (turno == null) {
+            throw new IllegalArgumentException("Turno não pode ser nulo.");
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Partida partida = (Partida) o;
+        return Objects.equals(timeA, partida.timeA) && Objects.equals(timeB, partida.timeB) && turno == partida.turno;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(timeA, timeB, turno);
     }
 }
