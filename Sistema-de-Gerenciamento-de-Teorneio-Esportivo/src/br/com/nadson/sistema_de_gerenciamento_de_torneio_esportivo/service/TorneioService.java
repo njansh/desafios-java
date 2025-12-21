@@ -1,5 +1,6 @@
 package br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.service;
 
+import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.enums.StatusPartida;
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.interfaces.Validavel;
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.modelo.Partida;
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.modelo.Time;
@@ -33,6 +34,10 @@ public class TorneioService implements Validavel {
     public void finalizarPartida() {
         validar();
         for (Partida partida : partidas) {
+            if (partida.getStatus() != StatusPartida.FINALIZADA) {
+                throw new IllegalStateException("Partida ainda não foi finalizada.");
+            }
+
             switch (partida.getResultado()) {
                 case VITORIA_TIME_A -> {
                     partida.getTimeA().adicionarPontos(3);
