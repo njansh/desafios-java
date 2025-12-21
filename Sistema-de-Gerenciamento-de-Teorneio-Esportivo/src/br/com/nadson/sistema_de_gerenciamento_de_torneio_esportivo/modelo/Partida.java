@@ -88,14 +88,11 @@ public class Partida implements Finalizavel, Validavel {
         this.status = StatusPartida.FINALIZADA;
         if (golsTimeA > golsTimeB) {
             resultado = ResultadoPartida.VITORIA_TIME_A;
-            timeA.adicionarPontos(3);
         } else if (golsTimeB > golsTimeA) {
             resultado = ResultadoPartida.VITORIA_TIME_B;
-            timeB.adicionarPontos(3);
         } else {
             resultado = ResultadoPartida.EMPATE;
-            timeA.adicionarPontos(1);
-            timeB.adicionarPontos(1);
+
         }
     }
 

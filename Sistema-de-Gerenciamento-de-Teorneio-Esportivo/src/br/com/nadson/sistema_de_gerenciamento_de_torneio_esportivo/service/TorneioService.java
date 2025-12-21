@@ -1,7 +1,5 @@
 package br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.service;
 
-import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.enums.ResultadoPartida;
-import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.enums.StatusPartida;
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.interfaces.Validavel;
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.modelo.Partida;
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.modelo.Time;
@@ -32,7 +30,7 @@ public class TorneioService implements Validavel {
         return new HashSet<>(partidas);
     }
 
-    public void finalizarpartida() {
+    public void finalizarPartida() {
         validar();
         for (Partida partida : partidas) {
             switch (partida.getResultado()) {
