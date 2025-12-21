@@ -6,6 +6,7 @@ import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.interfaces.Va
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Time implements Competidor, Pontuavel, Validavel {
 
@@ -69,5 +70,17 @@ public class Time implements Competidor, Pontuavel, Validavel {
 
     public boolean estaAptoParaPartida() {
         return jogadores.size() >= 7 && jogadores.size() <= 11;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Time time = (Time) o;
+        return id == time.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
