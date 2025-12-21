@@ -3,26 +3,27 @@ package br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.modelo;
 
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.enums.Posicao;
 import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.interfaces.Competidor;
+import br.com.nadson.sistema_de_gerenciamento_de_torneio_esportivo.interfaces.Validavel;
 
-public class Jogador implements Competidor {
+public class Jogador implements Competidor, Validavel {
     private static int PROXIMO_ID = 1;
     private String nome;
     private Posicao posicao;
     private final int id;
 
     public Jogador(String nome,String posicao){
+        this.posicao = null;
+        this.nome = nome;
 
-        if(nome == null || nome.isBlank()){
-            throw new IllegalArgumentException("Nome não pode ser nulo ou vazio");
-
-        }
         try {
             this.posicao = Posicao.valueOf(posicao.toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Posição inválida: " + posicao + ". Posições válidas são: GOLEIRO, ZAGUEIRO, LATERAL, MEIO_CAMPO, ATACANTE.");
+            throw new IllegalArgumentException("Posição inválida...");
         }
 
-        this.nome = nome;
+        validar();
+
+
         this.id = PROXIMO_ID++;
     }
 
@@ -38,5 +39,15 @@ public class Jogador implements Competidor {
     public int getId() {
         return id;
     }
-}
 
+    @Override
+    public void validar() {
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome do jogador não pode ser nulo ou vazio.");
+        }
+        if (posicao == null) {
+            throw new IllegalArgumentException("Posição do jogador não pode ser nula.");
+        }
+
+    }
+}
