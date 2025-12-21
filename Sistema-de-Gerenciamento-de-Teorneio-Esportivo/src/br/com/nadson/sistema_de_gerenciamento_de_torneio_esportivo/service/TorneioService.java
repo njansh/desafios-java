@@ -32,34 +32,33 @@ public class TorneioService implements Validavel {
         return new HashSet<>(partidas);
     }
 
-    public void finalizarpartda() {
+    public void finalizarpartida() {
         validar();
         for (Partida partida : partidas) {
-            if (partida.getStatus() == StatusPartida.EM_ANDAMENTO) {
-                partida.finalizar();
-                if (partida.getResultado().equals(ResultadoPartida.VITORIA_TIME_A)
-                ) {
+            switch (partida.getResultado()) {
+                case VITORIA_TIME_A -> {
                     partida.getTimeA().adicionarPontos(3);
                     partida.getTimeB().adicionarPontos(0);
                 }
-                if (partida.getResultado().equals(ResultadoPartida.EMPATE)) {
-                    partida.getTimeA().adicionarPontos(1);
-                    partida.getTimeB().adicionarPontos(1);
-                }
-                if (partida.getResultado().equals(ResultadoPartida.VITORIA_TIME_B)) {
+                case VITORIA_TIME_B -> {
                     partida.getTimeA().adicionarPontos(0);
                     partida.getTimeB().adicionarPontos(3);
                 }
-
-
+                case EMPATE -> {
+                    partida.getTimeA().adicionarPontos(1);
+                    partida.getTimeB().adicionarPontos(1);
+                }
             }
-        }
-    }
 
-    @Override
+
+
+        }
+        }
+
+
     public void validar() {
         if (partidas == null) {
             throw new IllegalStateException("A lista de partidas não pode ser nula.");
         }
-    }
-}
+    }    }
+
